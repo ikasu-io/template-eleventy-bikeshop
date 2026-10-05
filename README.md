@@ -11,7 +11,7 @@ filter and "reserve" links, a workshop price list, bike hire, a weekly
 group ride, and a visit section with the week's opening hours, an "open
 now" badge and the way from the station drawn as a route.
 
-- [Eleventy](https://www.11ty.dev) 3 and Eleventy Image, nothing else
+- [Eleventy](https://www.11ty.dev) 3 (now called Build Awesome) and Eleventy Image, nothing else
 - One Markdown file per bike: add, sell or reprice a bike by editing a file
 - Photos resized and converted to WebP at build time
 - No cookies, no external fonts, maps or scripts; works without JavaScript
@@ -49,6 +49,14 @@ and names the file and the field.
 `npm run build` writes a static site to `_site/`. Any static host works:
 Netlify, Cloudflare Pages, GitHub Pages, your own server. Set `url` in
 `src/_data/shop.json` to your domain.
+
+## Eleventy is now Build Awesome
+
+Eleventy was renamed Build Awesome in March 2026. Version 3, used here,
+is still published as `@11ty/eleventy` and supported; version 4 will be
+published as `@awesome.me/buildawesome`, with the same commands,
+configuration and plugins. This template moves over once version 4 is
+stable.
 
 ## Licence
 
