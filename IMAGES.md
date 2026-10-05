@@ -15,6 +15,6 @@ site. They do not show real places, people, bikes or brands.
 Images from Gemini carry Google's invisible SynthID watermark, which marks
 them as AI-generated.
 
-The logo, the favicon and the map are SVG drawings made for this site,
+The logo and the favicon are SVG drawings made for this site,
 under the same licence. The fonts Bricolage Grotesque and DM Sans are
 under the SIL Open Font License (`src/fonts/OFL-*.txt`).

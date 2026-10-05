@@ -10,7 +10,7 @@
   const now = `${parts.hour}:${parts.minute}`;
   const index = hours.findIndex((h) => h.day === parts.weekday);
   const today = hours[index];
-  document.querySelector(`.hours tr[data-day="${parts.weekday}"]`)?.classList.add('is-today');
+  document.querySelector(`.week-day[data-day="${parts.weekday}"]`)?.classList.add('is-today');
   const badge = document.querySelector('[data-open-badge]');
   if (badge && today) {
     const open = today.open && now >= today.open && now < today.close;

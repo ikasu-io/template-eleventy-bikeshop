@@ -134,33 +134,35 @@
   </div>
 </section>
 
-<section id="visit" class="section">
-  <div class="container visit">
-    <div>
-      <header class="section-head">
-        <p class="eyebrow">{{ visit.eyebrow }}</p>
-        <h2>{{ visit.title }}</h2>
-        <p>{{ visit.text }}</p>
-      </header>
-      <table class="hours">
-        <caption>Opening hours</caption>
-        <tbody>
-          {%- for h in shop.hours %}
-          <tr data-day="{{ h.day }}"><th scope="row">{{ h.day }}</th><td>{% if h.open %}{{ h.open }}–{{ h.close }}{% else %}Closed{% endif %}</td></tr>
-          {%- endfor %}
-        </tbody>
-      </table>
-    </div>
-    <div class="visit-side">
-      <address class="contact-card">
-        <strong>{{ shop.name }}</strong><br>
-        {{ shop.address.street }}<br>{{ shop.address.town }}
-        <span class="contact-links">
-          <a href="tel:{{ shop.phone | replace(' ', '') }}">{{ shop.phone }}</a>
-          <a href="{{ mail }}">{{ shop.email }}</a>
-        </span>
-      </address>
-      {% include "map.svg" %}
+<section id="visit" class="visit">
+  <div class="container">
+    <p class="eyebrow">{{ visit.eyebrow }}</p>
+    <h2 class="visit-address">{{ shop.address.street }}, <span>{{ shop.address.town }}</span></h2>
+    <p class="visit-text">{{ visit.text }}</p>
+
+    <h3 class="visit-label">Opening hours</h3>
+    <ol class="week">
+      {%- for h in shop.hours %}
+      <li class="week-day{% if not h.open %} is-closed{% endif %}" data-day="{{ h.day }}">
+        <span class="week-name"><abbr title="{{ h.day }}">{{ h.day | truncate(3, true, "") }}</abbr></span>
+        <span class="week-hours">{% if h.open %}{{ h.open }}<br>–{{ h.close }}{% else %}Closed{% endif %}</span>
+      </li>
+      {%- endfor %}
+    </ol>
+
+    <h3 class="visit-label">Getting here</h3>
+    <ol class="route">
+      {%- for stop in visit.route %}
+      <li class="route-stop{% if loop.last %} is-shop{% endif %}">
+        <strong>{{ stop.place }}</strong>
+        <span>{{ stop.note }}</span>
+      </li>
+      {%- endfor %}
+    </ol>
+
+    <div class="visit-contact">
+      <a href="tel:{{ shop.phone | replace(' ', '') }}"><span>Call</span>{{ shop.phone }}</a>
+      <a href="{{ mail }}"><span>Email</span>{{ shop.email }}</a>
     </div>
   </div>
 </section>

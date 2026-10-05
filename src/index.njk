@@ -47,6 +47,12 @@ ride:
 visit:
   eyebrow: Visit
   title: Find the shop
-  text: In the old mill on Wharf Street, at the end of the cobbles. Wheel your bike straight in — the workshop is on the ground floor. Ten minutes' walk from Brindlecombe station along the towpath.
+  text: In the old mill at the end of the cobbles. Wheel your bike straight in — the workshop is on the ground floor.
+  # The route diagram, from the station to the shop.
+  route:
+    - { place: "Brindlecombe station", note: "Take the steps down to the canal" }
+    - { place: "Towpath, heading east", note: "8 minutes on foot, 3 by bike" }
+    - { place: "Wharf Street bridge", note: "Cross and follow the cobbles" }
+    - { place: "Fettle Bikes", note: "Canal Mill, Unit 3 — big blue doors" }
 ---
 {% include "home.njk" %}

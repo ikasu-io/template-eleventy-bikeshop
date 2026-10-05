@@ -8,7 +8,8 @@
 
 A one-page website for a shop with a workshop: bikes for sale with a type
 filter and "reserve" links, a workshop price list, bike hire, a weekly
-group ride, opening hours with an "open now" badge, and a drawn map.
+group ride, and a visit section with the week's opening hours, an "open
+now" badge and the way from the station drawn as a route.
 
 - [Eleventy](https://www.11ty.dev) 3 and Eleventy Image, nothing else
 - One Markdown file per bike: add, sell or reprice a bike by editing a file

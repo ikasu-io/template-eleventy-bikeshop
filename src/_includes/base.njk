@@ -45,20 +45,17 @@
     {{ content | safe }}
   </main>
   <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <p class="brand">{% include "logo.svg" %}<span>{{ shop.name }}</span></p>
-        <p class="footer-tagline">{{ shop.tagline }}</p>
+    <div class="container">
+      <p class="footer-mark" aria-hidden="true">{{ shop.name }}</p>
+      <div class="footer-row">
+        <p>{{ shop.tagline }}</p>
+        <p>{{ shop.address.street }}, {{ shop.address.town }}</p>
+        <p><a href="tel:{{ shop.phone | replace(' ', '') }}">{{ shop.phone }}</a> · <a href="mailto:{{ shop.email }}">{{ shop.email }}</a></p>
       </div>
-      <address>
-        {{ shop.address.street }}<br>{{ shop.address.town }}<br>
-        <a href="tel:{{ shop.phone | replace(' ', '') }}">{{ shop.phone }}</a><br>
-        <a href="mailto:{{ shop.email }}">{{ shop.email }}</a>
-      </address>
-    </div>
-    <div class="container footer-bottom">
-      <p>Fictional demo site — content and images generated with AI</p>
-      <p><a href="#main">Back to top ↑</a></p>
+      <div class="footer-bottom">
+        <p>Fictional demo site — content and images generated with AI</p>
+        <p><a href="#main">Back to top ↑</a></p>
+      </div>
     </div>
   </footer>
   <script type="application/json" id="shop-hours">{{ { timeZone: shop.timeZone, hours: shop.hours } | json | safe }}</script>
