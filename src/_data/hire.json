@@ -1,0 +1,13 @@
+{
+  "bikes": [
+    { "name": "City bike", "day": 20, "weekend": 35 },
+    { "name": "Gravel bike", "day": 35, "weekend": 60 },
+    { "name": "Cargo e-bike", "day": 45, "weekend": 80 }
+  ],
+  "included": [
+    "Helmet, lock and lights",
+    "Puncture kit and pump",
+    "Our map of the towpath and the three best café stops",
+    "A quick fitting before you go"
+  ]
+}

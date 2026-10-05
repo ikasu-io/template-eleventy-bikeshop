@@ -1,0 +1,27 @@
+{
+  "name": "Fettle Bikes",
+  "tagline": "New, used and fixed. The bike shop by the canal.",
+  "description": "Bike shop and workshop in Canal Mill, Brindlecombe: new and checked used bikes, repairs and servicing, bike hire and a Sunday group ride.",
+  "url": "https://fettlebikes.example",
+  "phone": "+44 1632 960733",
+  "email": "shop@fettlebikes.example",
+  "address": {
+    "street": "Unit 3, Canal Mill, Wharf Street",
+    "town": "Brindlecombe",
+    "country": "GB"
+  },
+  "timeZone": "Europe/London",
+  "hours": [
+    { "day": "Monday", "open": null, "close": null },
+    { "day": "Tuesday", "open": "09:00", "close": "18:00" },
+    { "day": "Wednesday", "open": "09:00", "close": "18:00" },
+    { "day": "Thursday", "open": "09:00", "close": "19:30" },
+    { "day": "Friday", "open": "09:00", "close": "18:00" },
+    { "day": "Saturday", "open": "09:00", "close": "17:00" },
+    { "day": "Sunday", "open": "12:00", "close": "16:00" }
+  ],
+  "notice": {
+    "text": "Closed 24–27 December. Workshop bookings for January are open now.",
+    "until": "2026-12-27"
+  }
+}

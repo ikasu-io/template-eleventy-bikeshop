@@ -1,0 +1,32 @@
+{%- set offers = [] -%}
+{%- for bike in collections.bikes -%}
+{%- set offers = (offers.push({
+  "@type": "Product",
+  "name": bike.data.title,
+  "description": bike.data.specs | join(". "),
+  "offers": {
+    "@type": "Offer",
+    "price": bike.data.price,
+    "priceCurrency": "GBP",
+    "availability": "https://schema.org/SoldOut" if bike.data.status == "sold" else ("https://schema.org/LimitedAvailability" if bike.data.status == "reserved" else "https://schema.org/InStock"),
+    "itemCondition": "https://schema.org/UsedCondition" if bike.data.type == "used" else "https://schema.org/NewCondition"
+  }
+}), offers) -%}
+{%- endfor -%}
+{%- set hours = [] -%}
+{%- for h in shop.hours -%}{%- if h.open -%}
+{%- set hours = (hours.push({ "@type": "OpeningHoursSpecification", "dayOfWeek": h.day, "opens": h.open, "closes": h.close }), hours) -%}
+{%- endif -%}{%- endfor -%}
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org",
+  "@type": "BicycleStore",
+  "name": shop.name,
+  "description": shop.description,
+  "url": shop.url,
+  "telephone": shop.phone,
+  "email": shop.email,
+  "image": shop.url + "/og.jpg",
+  "address": { "@type": "PostalAddress", "streetAddress": shop.address.street, "addressLocality": shop.address.town, "addressCountry": shop.address.country },
+  "openingHoursSpecification": hours,
+  "makesOffer": offers
+} | json | safe }}</script>

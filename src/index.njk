@@ -1,0 +1,52 @@
+---
+layout: base.njk
+# Section texts for the home page. Bikes are in src/bikes/, prices and
+# hours in src/_data/.
+hero:
+  title: New, used and <em>fixed.</em>
+  text: A bike shop and workshop in the old mill by the canal since 2014. We sell bikes we'd ride ourselves, check every used one properly, and repair whatever you wheel in.
+  image: hero-shop
+  alt: Bikes hanging from a ceiling rail and standing in a row on a wooden floor, a bike in a repair stand at the back
+  sticker: Punctures fixed while you wait
+strip:
+  - Free safety check with every used bike
+  - 12 months' warranty on used bikes
+  - Cycle to Work scheme accepted
+  - Test rides any day
+  - Trade in your old bike
+bikes:
+  eyebrow: For sale
+  title: Bikes in the shop
+  text: New bikes we build up and set up for you, and used bikes that have been through the workshop. Reserve one by email or phone — we hold it for three days.
+workshop:
+  eyebrow: Workshop
+  title: Repairs and servicing
+  text: Dan and Priya fix everything with two wheels, from a squeaky brake to a full rebuild. Book by phone or email, or just bring it in — small jobs are usually done the same day.
+  image: workshop-hands
+  alt: A mechanic's greasy hands adjusting the rear derailleur of a bike in a repair stand
+  steps:
+    - Call or email with what's wrong and when you can drop the bike off.
+    - We look at it with you and give you a price before we start.
+    - We text you when it's ready. Pay when you pick it up.
+hire:
+  eyebrow: Hire
+  title: Borrow a bike for the day
+  text: For visitors, for trying a cargo bike before buying one, or for when yours is in the workshop. Bring a card or ID for the deposit.
+  image: hire-bikes
+  alt: Four grey hire bikes with baskets in a row outside the brick mill, helmets on the handlebars
+ride:
+  eyebrow: Ride with us
+  title: The Sunday ride
+  text: Every Sunday at 8:30 from the shop. About 50 km along the canal and up through the valley, at a pace where you can talk. Nobody gets dropped, there's a coffee stop halfway, and we're back by noon. Free, any bike, lights from October to March.
+  image: group-ride
+  alt: A small group of cyclists seen from behind on a canal towpath in the morning mist
+  facts:
+    - { value: "8:30", label: "Sundays, from the shop" }
+    - { value: "50 km", label: "Mostly flat, one hill" }
+    - { value: "25 km/h", label: "Average, no-drop" }
+visit:
+  eyebrow: Visit
+  title: Find the shop
+  text: In the old mill on Wharf Street, at the end of the cobbles. Wheel your bike straight in — the workshop is on the ground floor. Ten minutes' walk from Brindlecombe station along the towpath.
+---
+{% include "home.njk" %}

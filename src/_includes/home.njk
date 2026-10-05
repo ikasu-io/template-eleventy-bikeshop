@@ -1,0 +1,166 @@
+{%- set mail = "mailto:" + shop.email -%}
+<section class="hero">
+  <div class="container">
+    <h1 class="hero-title">{{ hero.title | safe }}</h1>
+    <div class="hero-row">
+      <p class="lead">{{ hero.text }}</p>
+      <p class="actions">
+        <a class="button" href="#workshop">Book a service</a>
+        <a class="button button-outline" href="#bikes">See the bikes</a>
+      </p>
+    </div>
+    <div class="hero-media">
+      <img src="{{ hero.image | image }}" alt="{{ hero.alt }}" sizes="(min-width: 80rem) 76rem, 100vw" loading="eager" fetchpriority="high" class="hero-image">
+      <p class="sticker">{{ hero.sticker }}</p>
+    </div>
+  </div>
+</section>
+
+<div class="strip" aria-label="Good to know">
+  <ul class="strip-track">
+    {%- for item in strip %}<li>{{ item }}</li>{% endfor -%}
+    {%- for item in strip %}<li aria-hidden="true">{{ item }}</li>{% endfor -%}
+  </ul>
+</div>
+
+<section id="bikes" class="section">
+  <div class="container">
+    <header class="section-head">
+      <p class="eyebrow">{{ bikes.eyebrow }}</p>
+      <h2>{{ bikes.title }}</h2>
+      <p>{{ bikes.text }}</p>
+    </header>
+    <div class="filter" data-filter hidden>
+      <span class="filter-label" id="filter-label">Show</span>
+      <div role="group" aria-labelledby="filter-label">
+        <button type="button" aria-pressed="true" data-type="all">All</button>
+        {%- for type in collections.bikes | bikeTypes %}
+        <button type="button" aria-pressed="false" data-type="{{ type }}">{{ type | capitalize }}</button>
+        {%- endfor %}
+      </div>
+    </div>
+    <ul class="bikes">
+      {%- for bike in collections.bikes %}
+      {%- set b = bike.data %}
+      <li class="bike bike-{{ b.status }}" data-type="{{ b.type }}">
+        <div class="bike-media">
+          <img src="{{ b.image | image }}" alt="{{ b.alt }}" sizes="(min-width: 80rem) 24rem, (min-width: 48rem) 45vw, 100vw">
+          <span class="status status-{{ b.status }}">{{ "In stock" if b.status == "in-stock" else ("Reserved" if b.status == "reserved" else "Sold") }}</span>
+        </div>
+        <div class="bike-body">
+          <p class="bike-type">{{ b.type | capitalize }} · {{ b.sizes }}</p>
+          <h3>{{ b.title }}</h3>
+          <div class="bike-text">{{ bike.content | safe }}</div>
+          <ul class="specs">{% for s in b.specs %}<li>{{ s }}</li>{% endfor %}</ul>
+          <div class="bike-foot">
+            <p class="price">{% if b.status == "sold" %}<s>{{ b.price | pounds }}</s>{% else %}{{ b.price | pounds }}{% endif %}</p>
+            {%- if b.status == "in-stock" %}
+            <a class="button button-small" href="{{ mail }}?subject={{ ('Reserve: ' + b.title) | urlencode }}">Reserve</a>
+            {%- elif b.status == "reserved" %}
+            <a class="link" href="{{ mail }}?subject={{ ('Waiting list: ' + b.title) | urlencode }}">Join the waiting list</a>
+            {%- endif %}
+          </div>
+        </div>
+      </li>
+      {%- endfor %}
+    </ul>
+    <p class="filter-empty" data-filter-empty hidden>Nothing of this kind in the shop right now — <a href="{{ mail }}">ask us</a>, we can usually find one.</p>
+  </div>
+</section>
+
+<section id="workshop" class="section section-concrete">
+  <div class="container workshop">
+    <div class="workshop-side">
+      <header class="section-head">
+        <p class="eyebrow">{{ workshop.eyebrow }}</p>
+        <h2>{{ workshop.title }}</h2>
+        <p>{{ workshop.text }}</p>
+      </header>
+      <img src="{{ workshop.image | image }}" alt="{{ workshop.alt }}" sizes="(min-width: 64rem) 30rem, 100vw" class="workshop-image">
+      <ol class="steps">{% for s in workshop.steps %}<li>{{ s }}</li>{% endfor %}</ol>
+      <p class="actions">
+        <a class="button" href="tel:{{ shop.phone | replace(' ', '') }}">Call {{ shop.phone }}</a>
+        <a class="button button-outline" href="{{ mail }}?subject={{ 'Workshop booking' | urlencode }}">Email us</a>
+      </p>
+    </div>
+    <div class="menu-card">
+      <h3>Workshop prices</h3>
+      <dl class="service-menu">
+        {%- for s in workshop.services %}
+        <div>
+          <dt>{{ s.name }}</dt>
+          <dd class="service-price">{{ s.price | pounds }}</dd>
+          <dd class="service-detail">{{ s.detail }} <span class="service-time">{{ s.time }}</span></dd>
+        </div>
+        {%- endfor %}
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="hire" class="section section-blue">
+  <div class="container hire">
+    <img src="{{ hire.image | image }}" alt="{{ hire.alt }}" sizes="(min-width: 64rem) 36rem, 100vw" class="hire-image">
+    <div>
+      <header class="section-head">
+        <p class="eyebrow">{{ hire.eyebrow }}</p>
+        <h2>{{ hire.title }}</h2>
+        <p>{{ hire.text }}</p>
+      </header>
+      <table class="hire-table">
+        <thead><tr><th scope="col">Bike</th><th scope="col">Day</th><th scope="col">Weekend</th></tr></thead>
+        <tbody>
+          {%- for b in hire.bikes %}
+          <tr><th scope="row">{{ b.name }}</th><td>{{ b.day | pounds }}</td><td>{{ b.weekend | pounds }}</td></tr>
+          {%- endfor %}
+        </tbody>
+      </table>
+      <ul class="included">{% for i in hire.included %}<li>{{ i }}</li>{% endfor %}</ul>
+    </div>
+  </div>
+</section>
+
+<section id="ride" class="ride">
+  <img src="{{ ride.image | image }}" alt="{{ ride.alt }}" sizes="100vw" class="ride-image">
+  <div class="container ride-inner">
+    <div class="ride-card">
+      <p class="eyebrow">{{ ride.eyebrow }}</p>
+      <h2>{{ ride.title }}</h2>
+      <p>{{ ride.text }}</p>
+      <dl class="ride-facts">
+        {%- for f in ride.facts %}<div><dt>{{ f.value }}</dt><dd>{{ f.label }}</dd></div>{% endfor -%}
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="visit" class="section">
+  <div class="container visit">
+    <div>
+      <header class="section-head">
+        <p class="eyebrow">{{ visit.eyebrow }}</p>
+        <h2>{{ visit.title }}</h2>
+        <p>{{ visit.text }}</p>
+      </header>
+      <table class="hours">
+        <caption>Opening hours</caption>
+        <tbody>
+          {%- for h in shop.hours %}
+          <tr data-day="{{ h.day }}"><th scope="row">{{ h.day }}</th><td>{% if h.open %}{{ h.open }}–{{ h.close }}{% else %}Closed{% endif %}</td></tr>
+          {%- endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="visit-side">
+      <address class="contact-card">
+        <strong>{{ shop.name }}</strong><br>
+        {{ shop.address.street }}<br>{{ shop.address.town }}
+        <span class="contact-links">
+          <a href="tel:{{ shop.phone | replace(' ', '') }}">{{ shop.phone }}</a>
+          <a href="{{ mail }}">{{ shop.email }}</a>
+        </span>
+      </address>
+      {% include "map.svg" %}
+    </div>
+  </div>
+</section>

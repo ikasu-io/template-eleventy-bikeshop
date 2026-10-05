@@ -1,0 +1,12 @@
+{
+  "services": [
+    { "name": "Safety check", "detail": "Brakes, gears, tyres and bolts checked and adjusted. Free with every used bike.", "time": "30 min", "price": 25 },
+    { "name": "Standard service", "detail": "Safety check plus clean, lube, wheel truing and cable adjustment.", "time": "Same day if in by 10:00", "price": 75 },
+    { "name": "Full service", "detail": "Stripped down, cleaned, bearings serviced, new cables. Parts extra.", "time": "2–3 days", "price": 150 },
+    { "name": "E-bike service", "detail": "Standard service plus motor and battery diagnostics and software update.", "time": "1–2 days", "price": 95 },
+    { "name": "Puncture repair", "detail": "Including a new inner tube.", "time": "While you wait", "price": 12 },
+    { "name": "Brake bleed", "detail": "Hydraulic disc brakes, per brake.", "time": "45 min", "price": 30 },
+    { "name": "Wheel truing", "detail": "From — broken spokes replaced at £3 each.", "time": "30 min", "price": 20 },
+    { "name": "Fitting a part you brought", "detail": "From — we're happy to fit things you bought elsewhere.", "time": "Varies", "price": 15 }
+  ]
+}
