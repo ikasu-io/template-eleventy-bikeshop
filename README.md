@@ -58,6 +58,14 @@ published as `@awesome.me/buildawesome`, with the same commands,
 configuration and plugins. This template moves over once version 4 is
 stable.
 
+## Using this for a real site
+
+The images look real but were generated with AI, and the
+notice in the footer is what labels them. If you publish a real site with
+them and remove that notice, you may have to label them yourself, for
+example under Article 50 of the EU AI Act. Replacing them with your own
+avoids the question.
+
 ## Licence
 
 MIT, see [LICENSE](LICENSE). Images: see [IMAGES.md](IMAGES.md).
